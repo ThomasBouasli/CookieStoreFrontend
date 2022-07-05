@@ -1,58 +1,56 @@
-import styled from 'styled-components';
+import styled, { css } from "styled-components";
+
+export const Typography = () => css`
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+  text-transform: uppercase;
+`;
 
 type ButtonProps = {
   primary?: boolean;
   secondary?: boolean;
-
-  small?: boolean;
-  medium?: boolean;
-  large?: boolean;
 };
 
 export const Button = styled.button<ButtonProps>`
-  width: ${(props) => {
-    if (props.small) {
-      return '100px';
-    }
-    if (props.medium) {
-      return '200px';
-    }
-    if (props.large) {
-      return '300px';
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    return '200px';
-  }};
-  height: 50px;
+  padding: 10px 20px;
 
+  width: 100%;
+  max-height: 50px;
+
+  box-shadow: 4px 8px 0px #000000;
   border-radius: 10px;
-  border: none;
+  border: solid black;
+  border-width: 4px;
 
   background-color: ${(props) => {
-    if (props.primary) {
-      return '#D5A150';
-    }
     if (props.secondary) {
-      return '#AD712C';
+      return "#A5663C";
     }
 
-    return '#D5A150';
+    return "#FFB864";
   }};
 
-  color: white;
+  transition: 0.1s all linear;
 
-  font-family: Dosis;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 30px;
-  letter-spacing: 0em;
-  text-align: center;
+  ${Typography()}
 
-  cursor: pointer;
+  :active {
+    background-color: ${(props) => {
+      if (props.secondary) {
+        return "#89563A";
+      }
 
-  transition: all 0.2s ease-in-out;
+      return "#F4A651";
+    }};
 
-  :hover {
-    transform: scale(1.1);
+    box-shadow: 2px 4px 0px #000000;
   }
 `;

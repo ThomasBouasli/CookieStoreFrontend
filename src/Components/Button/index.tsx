@@ -1,37 +1,13 @@
-import * as S from './styles';
+import * as S from "./styles";
 
-type props = {
+interface props extends React.HTMLAttributes<HTMLButtonElement> {
   text?: string;
   primary?: boolean;
   secondary?: boolean;
-  small?: boolean;
-  medium?: boolean;
-  large?: boolean;
   onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset';
-};
+  type?: "button" | "submit" | "reset";
+}
 
-export default function Button({
-  text,
-  primary,
-  secondary,
-  small,
-  medium,
-  large,
-  onClick,
-  type
-}: props) {
-  return (
-    <S.Button
-      primary={primary}
-      secondary={secondary}
-      small={small}
-      medium={medium}
-      large={large}
-      onClick={onClick}
-      type={type}
-    >
-      {text}
-    </S.Button>
-  );
+export default function Button(props: props) {
+  return <S.Button {...props}>{props.text}</S.Button>;
 }
